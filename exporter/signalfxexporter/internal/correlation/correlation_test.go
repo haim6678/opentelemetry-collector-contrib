@@ -54,7 +54,7 @@ func TestTrackerStart(t *testing.T) {
 		{
 			name: "invalid http client settings fails",
 			config: &Config{
-				HTTPClientConfig: confighttp.HTTPClientConfig{
+				HTTPClientSettings: confighttp.HTTPClientSettings{
 					Endpoint: "localhost:9090",
 					TLSSetting: configtls.TLSClientSetting{
 						TLSSetting: configtls.TLSSetting{

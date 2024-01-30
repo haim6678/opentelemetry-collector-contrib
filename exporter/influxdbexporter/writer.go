@@ -30,7 +30,7 @@ type influxHTTPWriter struct {
 	encoderPool sync.Pool
 	httpClient  *http.Client
 
-	httpClientSettings confighttp.HTTPClientConfig
+	httpClientSettings confighttp.HTTPClientSettings
 	telemetrySettings  component.TelemetrySettings
 	writeURL           string
 	payloadMaxLines    int
@@ -54,7 +54,7 @@ func newInfluxHTTPWriter(logger common.Logger, config *Config, telemetrySettings
 				return e
 			},
 		},
-		httpClientSettings: config.HTTPClientConfig,
+		httpClientSettings: config.HTTPClientSettings,
 		telemetrySettings:  telemetrySettings,
 		writeURL:           writeURL,
 		payloadMaxLines:    config.PayloadMaxLines,
@@ -64,7 +64,7 @@ func newInfluxHTTPWriter(logger common.Logger, config *Config, telemetrySettings
 }
 
 func composeWriteURL(config *Config) (string, error) {
-	writeURL, err := url.Parse(config.HTTPClientConfig.Endpoint)
+	writeURL, err := url.Parse(config.HTTPClientSettings.Endpoint)
 	if err != nil {
 		return "", err
 	}
@@ -90,20 +90,20 @@ func composeWriteURL(config *Config) (string, error) {
 		if config.V1Compatibility.Username != "" && config.V1Compatibility.Password != "" {
 			basicAuth := base64.StdEncoding.EncodeToString(
 				[]byte(config.V1Compatibility.Username + ":" + string(config.V1Compatibility.Password)))
-			if config.HTTPClientConfig.Headers == nil {
-				config.HTTPClientConfig.Headers = make(map[string]configopaque.String, 1)
+			if config.HTTPClientSettings.Headers == nil {
+				config.HTTPClientSettings.Headers = make(map[string]configopaque.String, 1)
 			}
-			config.HTTPClientConfig.Headers["Authorization"] = configopaque.String("Basic " + basicAuth)
+			config.HTTPClientSettings.Headers["Authorization"] = configopaque.String("Basic " + basicAuth)
 		}
 	} else {
 		queryValues.Set("org", config.Org)
 		queryValues.Set("bucket", config.Bucket)
 
 		if config.Token != "" {
-			if config.HTTPClientConfig.Headers == nil {
-				config.HTTPClientConfig.Headers = make(map[string]configopaque.String, 1)
+			if config.HTTPClientSettings.Headers == nil {
+				config.HTTPClientSettings.Headers = make(map[string]configopaque.String, 1)
 			}
-			config.HTTPClientConfig.Headers["Authorization"] = "Token " + config.Token
+			config.HTTPClientSettings.Headers["Authorization"] = "Token " + config.Token
 		}
 	}
 

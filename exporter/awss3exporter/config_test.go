@@ -179,18 +179,4 @@ func TestMarshallerName(t *testing.T) {
 			MarshalerName: "sumo_ic",
 		},
 	)
-
-	e = cfg.Exporters[component.NewIDWithName("awss3", "proto")].(*Config)
-
-	assert.Equal(t, e,
-		&Config{
-			S3Uploader: S3UploaderConfig{
-				Region:      "us-east-1",
-				S3Bucket:    "bar",
-				S3Partition: "minute",
-			},
-			MarshalerName: "otlp_proto",
-		},
-	)
-
 }

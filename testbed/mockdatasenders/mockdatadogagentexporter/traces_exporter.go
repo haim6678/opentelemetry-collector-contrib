@@ -23,13 +23,13 @@ import (
 type ddExporter struct {
 	endpoint       string
 	client         *http.Client
-	clientSettings *confighttp.HTTPClientConfig
+	clientSettings *confighttp.HTTPClientSettings
 }
 
 func createExporter(c *Config) *ddExporter {
 	dd := &ddExporter{
 		endpoint:       c.Endpoint,
-		clientSettings: &c.HTTPClientConfig,
+		clientSettings: &c.HTTPClientSettings,
 		client:         nil,
 	}
 

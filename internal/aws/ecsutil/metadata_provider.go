@@ -42,7 +42,7 @@ func NewDetectedTaskMetadataProvider(set component.TelemetrySettings) (MetadataP
 		return nil, fmt.Errorf("unable to detect task metadata endpoint")
 	}
 
-	clientSettings := confighttp.HTTPClientConfig{}
+	clientSettings := confighttp.HTTPClientSettings{}
 	client, err := NewRestClient(*endpoint, clientSettings, set)
 	if err != nil {
 		return nil, err

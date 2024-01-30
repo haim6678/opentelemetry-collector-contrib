@@ -36,7 +36,7 @@ func TestScraperStart(t *testing.T) {
 			desc: "Bad Config",
 			scraper: &bigipScraper{
 				cfg: &Config{
-					HTTPClientConfig: confighttp.HTTPClientConfig{
+					HTTPClientSettings: confighttp.HTTPClientSettings{
 						Endpoint: defaultEndpoint,
 						TLSSetting: configtls.TLSClientSetting{
 							TLSSetting: configtls.TLSSetting{
@@ -53,7 +53,7 @@ func TestScraperStart(t *testing.T) {
 			desc: "Valid Config",
 			scraper: &bigipScraper{
 				cfg: &Config{
-					HTTPClientConfig: confighttp.HTTPClientConfig{
+					HTTPClientSettings: confighttp.HTTPClientSettings{
 						TLSSetting: configtls.TLSClientSetting{},
 						Endpoint:   defaultEndpoint,
 					},

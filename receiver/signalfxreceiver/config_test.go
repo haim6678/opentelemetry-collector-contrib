@@ -35,7 +35,7 @@ func TestLoadConfig(t *testing.T) {
 		{
 			id: component.NewIDWithName(metadata.Type, "allsettings"),
 			expected: &Config{
-				HTTPServerConfig: confighttp.HTTPServerConfig{
+				HTTPServerSettings: confighttp.HTTPServerSettings{
 					Endpoint: "localhost:9943",
 				},
 				AccessTokenPassthroughConfig: splunk.AccessTokenPassthroughConfig{
@@ -46,7 +46,7 @@ func TestLoadConfig(t *testing.T) {
 		{
 			id: component.NewIDWithName(metadata.Type, "tls"),
 			expected: &Config{
-				HTTPServerConfig: confighttp.HTTPServerConfig{
+				HTTPServerSettings: confighttp.HTTPServerSettings{
 					Endpoint: ":9943",
 					TLSSetting: &configtls.TLSServerSetting{
 						TLSSetting: configtls.TLSSetting{

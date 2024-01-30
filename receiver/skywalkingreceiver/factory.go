@@ -51,7 +51,7 @@ func createDefaultConfig() component.Config {
 					Transport: "tcp",
 				},
 			},
-			HTTP: &confighttp.HTTPServerConfig{
+			HTTP: &confighttp.HTTPServerSettings{
 				Endpoint: defaultHTTPBindEndpoint,
 			},
 		},

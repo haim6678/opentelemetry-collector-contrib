@@ -119,7 +119,7 @@ func TestCreateTLSThriftHTTPEndpoint(t *testing.T) {
 	factory := NewFactory()
 	cfg := factory.CreateDefaultConfig()
 
-	cfg.(*Config).Protocols.ThriftHTTP = &confighttp.HTTPServerConfig{
+	cfg.(*Config).Protocols.ThriftHTTP = &confighttp.HTTPServerSettings{
 		Endpoint: defaultHTTPBindEndpoint,
 		TLSSetting: &configtls.TLSServerSetting{
 			TLSSetting: configtls.TLSSetting{

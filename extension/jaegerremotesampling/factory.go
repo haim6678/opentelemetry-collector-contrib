@@ -30,7 +30,7 @@ func NewFactory() extension.Factory {
 
 func createDefaultConfig() component.Config {
 	return &Config{
-		HTTPServerConfig: &confighttp.HTTPServerConfig{
+		HTTPServerSettings: &confighttp.HTTPServerSettings{
 			Endpoint: ":5778",
 		},
 		GRPCServerSettings: &configgrpc.GRPCServerSettings{

@@ -62,7 +62,7 @@ func TestLoadConfig(t *testing.T) {
 					NumConsumers: 2,
 					QueueSize:    10,
 				},
-				HTTPClientConfig: confighttp.HTTPClientConfig{
+				HTTPClientSettings: confighttp.HTTPClientSettings{
 					Headers: map[string]configopaque.String{
 						"can you have a . here?": "F0000000-0000-0000-0000-000000000000",
 						"header1":                "234",
@@ -107,7 +107,7 @@ func TestConfig_Validate(t *testing.T) {
 			name: "NoEndpoint",
 			cfg: func() *Config {
 				cfg := createDefaultConfig().(*Config)
-				cfg.HTTPClientConfig.Endpoint = ""
+				cfg.HTTPClientSettings.Endpoint = ""
 				return cfg
 			}(),
 			wantErr: "endpoint must be non-empty",

@@ -41,7 +41,7 @@ func TestCreateNewLogReceiver(t *testing.T) {
 		{
 			desc: "User defined config success",
 			cfg: Config{
-				HTTPServerConfig: confighttp.HTTPServerConfig{
+				HTTPServerSettings: confighttp.HTTPServerSettings{
 					Endpoint: "localhost:8080",
 				},
 				ReadTimeout:  "543",

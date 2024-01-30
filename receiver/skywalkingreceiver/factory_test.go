@@ -126,7 +126,7 @@ func TestCreateTLSHTTPEndpoint(t *testing.T) {
 	factory := NewFactory()
 	cfg := factory.CreateDefaultConfig()
 
-	cfg.(*Config).Protocols.HTTP = &confighttp.HTTPServerConfig{
+	cfg.(*Config).Protocols.HTTP = &confighttp.HTTPServerSettings{
 		Endpoint: defaultHTTPBindEndpoint,
 		TLSSetting: &configtls.TLSServerSetting{
 			TLSSetting: configtls.TLSSetting{
@@ -146,7 +146,7 @@ func TestCreateInvalidHTTPEndpoint(t *testing.T) {
 	factory := NewFactory()
 	cfg := factory.CreateDefaultConfig()
 
-	cfg.(*Config).Protocols.HTTP = &confighttp.HTTPServerConfig{
+	cfg.(*Config).Protocols.HTTP = &confighttp.HTTPServerSettings{
 		Endpoint: defaultHTTPBindEndpoint,
 	}
 	set := receivertest.NewNopCreateSettings()

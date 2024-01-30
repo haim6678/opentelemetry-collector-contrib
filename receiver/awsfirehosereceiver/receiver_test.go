@@ -77,7 +77,7 @@ func TestStart(t *testing.T) {
 		})
 		cfg := &Config{
 			RecordType: defaultRecordType,
-			HTTPServerConfig: confighttp.HTTPServerConfig{
+			HTTPServerSettings: confighttp.HTTPServerSettings{
 				Endpoint: listener.Addr().String(),
 			},
 		}

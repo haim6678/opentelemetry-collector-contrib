@@ -26,9 +26,8 @@ type S3UploaderConfig struct {
 type MarshalerType string
 
 const (
-	OtlpProtobuf MarshalerType = "otlp_proto"
-	OtlpJSON     MarshalerType = "otlp_json"
-	SumoIC       MarshalerType = "sumo_ic"
+	OtlpJSON MarshalerType = "otlp_json"
+	SumoIC   MarshalerType = "sumo_ic"
 )
 
 // Config contains the main configuration options for the s3 exporter

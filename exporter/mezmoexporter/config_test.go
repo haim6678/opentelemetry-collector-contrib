@@ -41,7 +41,7 @@ func TestLoadConfig(t *testing.T) {
 		{
 			id: component.NewIDWithName(metadata.Type, "allsettings"),
 			expected: &Config{
-				HTTPClientConfig: confighttp.HTTPClientConfig{
+				HTTPClientSettings: confighttp.HTTPClientSettings{
 					Timeout: 5 * time.Second,
 				},
 				BackOffConfig: configretry.BackOffConfig{

@@ -39,7 +39,7 @@ func TestCreateMetricsReceiver(t *testing.T) {
 			ScraperControllerSettings: scraperhelper.ScraperControllerSettings{
 				CollectionInterval: 10 * time.Second,
 			},
-			HTTPClientConfig: confighttp.HTTPClientConfig{
+			HTTPClientSettings: confighttp.HTTPClientSettings{
 				Endpoint: defaultEndpoint,
 			},
 			MetricsBuilderConfig: metadata.DefaultMetricsBuilderConfig(),

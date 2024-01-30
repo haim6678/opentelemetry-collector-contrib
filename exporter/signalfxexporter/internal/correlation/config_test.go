@@ -12,7 +12,7 @@ import (
 
 func TestValidConfig(t *testing.T) {
 	config := DefaultConfig()
-	config.HTTPClientConfig.Endpoint = "https://localhost"
+	config.HTTPClientSettings.Endpoint = "https://localhost"
 	require.NoError(t, config.validate())
 }
 
@@ -22,7 +22,7 @@ func TestInvalidConfig(t *testing.T) {
 	require.Error(t, noEndpointErr)
 
 	invalid = Config{
-		HTTPClientConfig: confighttp.HTTPClientConfig{Endpoint: ":123:456"},
+		HTTPClientSettings: confighttp.HTTPClientSettings{Endpoint: ":123:456"},
 	}
 	invalidURLErr := invalid.validate()
 	require.Error(t, invalidURLErr)

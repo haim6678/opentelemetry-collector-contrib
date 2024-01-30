@@ -62,7 +62,6 @@ func TestCreateProcessors(t *testing.T) {
 				consumertest.NewNop())
 			assert.NotNil(t, mp)
 			assert.NoError(t, mErr)
-			assert.NoError(t, mp.Shutdown(context.Background()))
 		})
 	}
 }

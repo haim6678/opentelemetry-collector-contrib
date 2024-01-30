@@ -32,7 +32,7 @@ type zipkinExporter struct {
 	url            string
 	client         *http.Client
 	serializer     zipkinreporter.SpanSerializer
-	clientSettings *confighttp.HTTPClientConfig
+	clientSettings *confighttp.HTTPClientSettings
 	settings       component.TelemetrySettings
 }
 
@@ -40,7 +40,7 @@ func createZipkinExporter(cfg *Config, settings component.TelemetrySettings) (*z
 	ze := &zipkinExporter{
 		defaultServiceName: cfg.DefaultServiceName,
 		url:                cfg.Endpoint,
-		clientSettings:     &cfg.HTTPClientConfig,
+		clientSettings:     &cfg.HTTPClientSettings,
 		client:             nil,
 		settings:           settings,
 	}

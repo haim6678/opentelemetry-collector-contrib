@@ -30,7 +30,7 @@ func createDefaultConfig() component.Config {
 
 	return &Config{
 		ScraperControllerSettings: cfg,
-		HTTPClientConfig: confighttp.HTTPClientConfig{
+		HTTPClientSettings: confighttp.HTTPClientSettings{
 			Endpoint: "http://localhost:80/status",
 			Timeout:  10 * time.Second,
 		},

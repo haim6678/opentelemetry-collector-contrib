@@ -27,7 +27,7 @@ func NewFactory() receiver.Factory {
 
 func createDefaultConfig() component.Config {
 	return &Config{
-		HTTPServerConfig: confighttp.HTTPServerConfig{
+		HTTPServerSettings: confighttp.HTTPServerSettings{
 			Endpoint: "localhost:8126",
 		},
 		ReadTimeout: 60 * time.Second,

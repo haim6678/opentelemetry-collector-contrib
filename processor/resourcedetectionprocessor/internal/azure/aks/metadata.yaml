@@ -11,7 +11,3 @@ resource_attributes:
     description: The cloud.platform
     type: string
     enabled: true
-  k8s.cluster.name:
-    description: The k8s.cluster.name parsed from the Azure Instance Metadata Service's infrastructure resource group field
-    type: string
-    enabled: false

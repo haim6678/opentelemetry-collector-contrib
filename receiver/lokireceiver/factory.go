@@ -15,13 +15,10 @@ import (
 	"go.opentelemetry.io/collector/consumer"
 	"go.opentelemetry.io/collector/receiver"
 
-	"github.com/open-telemetry/opentelemetry-collector-contrib/internal/common/localhostgate"
 	"github.com/open-telemetry/opentelemetry-collector-contrib/receiver/lokireceiver/internal/metadata"
 )
 
 const (
-	defaultGRPCPort         = 3600
-	defaultHTTPPort         = 3500
 	defaultGRPCBindEndpoint = "0.0.0.0:3600"
 	defaultHTTPBindEndpoint = "0.0.0.0:3500"
 )
@@ -39,12 +36,12 @@ func createDefaultConfig() component.Config {
 		Protocols: Protocols{
 			GRPC: &configgrpc.GRPCServerSettings{
 				NetAddr: confignet.NetAddr{
-					Endpoint:  localhostgate.EndpointForPort(defaultGRPCPort),
+					Endpoint:  defaultGRPCBindEndpoint,
 					Transport: "tcp",
 				},
 			},
-			HTTP: &confighttp.HTTPServerConfig{
-				Endpoint: localhostgate.EndpointForPort(defaultHTTPPort),
+			HTTP: &confighttp.HTTPServerSettings{
+				Endpoint: defaultHTTPBindEndpoint,
 			},
 		},
 	}

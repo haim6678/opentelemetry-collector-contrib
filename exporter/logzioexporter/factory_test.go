@@ -63,7 +63,7 @@ func TestGenerateUrl(t *testing.T) {
 		cfg := &Config{
 			Region: test.region,
 			Token:  "token",
-			HTTPClientConfig: confighttp.HTTPClientConfig{
+			HTTPClientSettings: confighttp.HTTPClientSettings{
 				Endpoint: test.endpoint,
 			},
 		}

@@ -17,7 +17,7 @@ import (
 // DefaultConfig returns default configuration correlation values.
 func DefaultConfig() *Config {
 	return &Config{
-		HTTPClientConfig:    confighttp.HTTPClientConfig{Timeout: 5 * time.Second},
+		HTTPClientSettings:  confighttp.HTTPClientSettings{Timeout: 5 * time.Second},
 		StaleServiceTimeout: 5 * time.Minute,
 		SyncAttributes: map[string]string{
 			conventions.AttributeK8SPodUID:   conventions.AttributeK8SPodUID,
@@ -36,8 +36,8 @@ func DefaultConfig() *Config {
 
 // Config defines configuration for correlation via traces.
 type Config struct {
-	confighttp.HTTPClientConfig `mapstructure:",squash"`
-	correlations.Config         `mapstructure:",squash"`
+	confighttp.HTTPClientSettings `mapstructure:",squash"`
+	correlations.Config           `mapstructure:",squash"`
 
 	// How long to wait after a trace span's service name is last seen before
 	// uncorrelating that service.
@@ -47,11 +47,11 @@ type Config struct {
 }
 
 func (c *Config) validate() error {
-	if c.HTTPClientConfig.Endpoint == "" {
+	if c.HTTPClientSettings.Endpoint == "" {
 		return errors.New("`correlation.endpoint` not specified")
 	}
 
-	_, err := url.Parse(c.HTTPClientConfig.Endpoint)
+	_, err := url.Parse(c.HTTPClientSettings.Endpoint)
 	if err != nil {
 		return err
 	}

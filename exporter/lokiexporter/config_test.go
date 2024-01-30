@@ -36,7 +36,7 @@ func TestLoadConfigNewExporter(t *testing.T) {
 		{
 			id: component.NewIDWithName(metadata.Type, "allsettings"),
 			expected: &Config{
-				HTTPClientConfig: confighttp.HTTPClientConfig{
+				HTTPClientSettings: confighttp.HTTPClientSettings{
 					Headers: map[string]configopaque.String{
 						"X-Custom-Header": "loki_rocks",
 					},
@@ -110,7 +110,7 @@ func TestConfigValidate(t *testing.T) {
 		{
 			desc: "Config is valid",
 			cfg: &Config{
-				HTTPClientConfig: confighttp.HTTPClientConfig{
+				HTTPClientSettings: confighttp.HTTPClientSettings{
 					Endpoint: "https://loki.example.com",
 				},
 			},

@@ -33,7 +33,7 @@ func TestCreateDefaultConfig(t *testing.T) {
 		IngestURL: defaultIngestURL,
 		IngestKey: "",
 
-		HTTPClientConfig: confighttp.HTTPClientConfig{
+		HTTPClientSettings: confighttp.HTTPClientSettings{
 			Timeout: 5 * time.Second,
 		},
 		BackOffConfig: configretry.NewDefaultBackOffConfig(),

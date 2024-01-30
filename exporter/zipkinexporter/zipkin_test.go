@@ -48,7 +48,7 @@ func TestZipkinExporter_roundtripJSON(t *testing.T) {
 	defer cst.Close()
 
 	cfg := &Config{
-		HTTPClientConfig: confighttp.HTTPClientConfig{
+		HTTPClientSettings: confighttp.HTTPClientSettings{
 			Endpoint: cst.URL,
 		},
 		Format: "json",
@@ -66,7 +66,7 @@ func TestZipkinExporter_roundtripJSON(t *testing.T) {
 	// Run the Zipkin receiver to "receive spans upload from a client application"
 	addr := testutil.GetAvailableLocalAddress(t)
 	recvCfg := &zipkinreceiver.Config{
-		HTTPServerConfig: confighttp.HTTPServerConfig{
+		HTTPServerSettings: confighttp.HTTPServerSettings{
 			Endpoint: addr,
 		},
 	}
@@ -271,7 +271,7 @@ const zipkinSpansJSONJavaLibrary = `
 
 func TestZipkinExporter_invalidFormat(t *testing.T) {
 	config := &Config{
-		HTTPClientConfig: confighttp.HTTPClientConfig{
+		HTTPClientSettings: confighttp.HTTPClientSettings{
 			Endpoint: "1.2.3.4",
 		},
 		Format: "foobar",
@@ -295,7 +295,7 @@ func TestZipkinExporter_roundtripProto(t *testing.T) {
 	defer cst.Close()
 
 	cfg := &Config{
-		HTTPClientConfig: confighttp.HTTPClientConfig{
+		HTTPClientSettings: confighttp.HTTPClientSettings{
 			Endpoint: cst.URL,
 		},
 		Format: "proto",
@@ -314,7 +314,7 @@ func TestZipkinExporter_roundtripProto(t *testing.T) {
 	// Run the Zipkin receiver to "receive spans upload from a client application"
 	addr := testutil.GetAvailableLocalAddress(t)
 	recvCfg := &zipkinreceiver.Config{
-		HTTPServerConfig: confighttp.HTTPServerConfig{
+		HTTPServerSettings: confighttp.HTTPServerSettings{
 			Endpoint: addr,
 		},
 	}

@@ -13,26 +13,26 @@ import (
 )
 
 type RLPGatewayConfig struct {
-	confighttp.HTTPClientConfig `mapstructure:",squash"`
-	ShardID                     string `mapstructure:"shard_id"`
+	confighttp.HTTPClientSettings `mapstructure:",squash"`
+	ShardID                       string `mapstructure:"shard_id"`
 }
 
-// LimitedTLSClientSetting is a subset of TLSClientSetting, see LimitedHTTPClientConfig for more details
+// LimitedTLSClientSetting is a subset of TLSClientSetting, see LimitedHTTPClientSettings for more details
 type LimitedTLSClientSetting struct {
 	InsecureSkipVerify bool `mapstructure:"insecure_skip_verify"`
 }
 
-// LimitedHTTPClientConfig is a subset of HTTPClientConfig, implemented as a separate type due to the library this
+// LimitedHTTPClientSettings is a subset of HTTPClientSettings, implemented as a separate type due to the library this
 // configuration is used with not taking a preconfigured http.Client as input, but only taking these specific options
-type LimitedHTTPClientConfig struct {
+type LimitedHTTPClientSettings struct {
 	Endpoint   string                  `mapstructure:"endpoint"`
 	TLSSetting LimitedTLSClientSetting `mapstructure:"tls"`
 }
 
 type UAAConfig struct {
-	LimitedHTTPClientConfig `mapstructure:",squash"`
-	Username                string              `mapstructure:"username"`
-	Password                configopaque.String `mapstructure:"password"`
+	LimitedHTTPClientSettings `mapstructure:",squash"`
+	Username                  string              `mapstructure:"username"`
+	Password                  configopaque.String `mapstructure:"password"`
 }
 
 // Config defines configuration for Collectd receiver.
